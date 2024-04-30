@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <!-- Add any additional CSS or link to a CSS framework like Bootstrap here -->
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="/about-us">About us</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact-us">Contact us</a></li>
+            <!-- <li class="nav-item"><a class="nav-link" href="/attendance-records">Login As a students/teacher</a></li> -->
+            <li class="nav-item"><a class="nav-link" href="/home">Home page</a></li>
+            <li class="nav-item"><a class="nav-link" href="/allattendance"> Check All Attendance</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Welcome to Attendance Management System</h1>
+        <p>This system helps you manage attendance records for both students and staff efficiently.</p>
+        <h2>Features</h2>
+        <ul>
+            <li>Record attendance for students and teachers</li>
+            <li>View attendance reports</li>
+            <li>Track attendance of staff</li>
+            <li>Generate reports for payroll and performance evaluation</li>
+        </ul>
+    </div>
+
+    <div class="admin-login">
+        <h1>Admin Login</h1>
+        <form action="/admin-login" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <!-- Add any additional admin-related content here -->
+
+</body>
+
+</html>

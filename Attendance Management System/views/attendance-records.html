@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Record</title>
+    <link rel="stylesheet" href="/css/atm.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about-us">About</a></li>
+            <li><a href="contact-us">Contact</a></li>
+            <li><a href="/attendance-records">Attendance Record</a></li>
+            <li><a href="/query">Queries</a></li>
+            <li><a href="/reviwes">Reviews</a></li>
+            <li><a href="/login">Log-Out</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="container">
+        <h1>Attendance Records</h1>
+
+        <form id="attendanceRecordForm" onsubmit="userRecords(event)">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="user_type">User Type</label>
+                <select id="user_type" name="user_type" required>
+                    <option value="Student">Student</option>
+                    <option value="Teacher">Teacher</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="class">Class</label>
+                <input type="text" id="class" name="class" placeholder="for teacher it is NA" required>
+            </div>
+            <div class="form-group">
+                <label for="attendance_status">Attendance Status</label>
+                <input type="text" id="attendance_status" name="attendance_status" placeholder="present/absent" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <button type="submit">Add Record</button>
+        </form>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/atm.js"></script>
+
+
+</html>

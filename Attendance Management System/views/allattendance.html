@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Records</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            text-align: center;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="/admin">Login As A admin</a></li>
+            <li><a href="/about-us">About us</a></li>
+            <li><a href="contact-us">Contact us</a></li>
+            <li><a href="/attendance-records">Login As a students/teacher</a></li>
+            <li><a href="/home">Home page</a></li>
+            <li><a href="/allattendance">All Attendance</a></li>
+        </ul>
+    </nav>
+    <h1>All Records are here</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>User Type</th>
+                <th>Class</th>
+                <th>Attendance Status</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody id="records-container"></tbody>
+    </table>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            getData();
+        });
+
+        async function getData() {
+            try {
+                const res = await axios.get('/userattendanc/alluser');
+                const data = res.data;
+
+                const recordsContainer = document.getElementById('records-container');
+                recordsContainer.innerHTML = ''; // Clear previous records
+
+                data.attendance.forEach(record => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${record.name}</td>
+                        <td>${record.userType}</td>
+                        <td>${record.userclass}</td>
+                        <td>${record.attendanceStatus}</td>
+                        <td>${new Date(record.date).toLocaleDateString()}</td>
+                    `;
+                    recordsContainer.appendChild(row);
+                });
+            } catch (err) {
+                console.error('Error fetching attendance records:', err);
+            }
+        }
+    </script>
+</body>
+
+</html>
